@@ -6,9 +6,10 @@
         <meta name="description" content="Online game">
         <title>BounceThemAll!</title>
         <link rel="stylesheet" href="./css/style.css" type="text/css">
-        <script src="./js/game.js"></script>
+        <script src="./js/game.js" type="text/javascript"></script>
+        <script src="./js/ball.js" type="text/javascript"></script>
     </head>
-    <body onload="init()" onkeydown="keydownHandler()" onresize="resize()">
+    <body onload="init()" onkeydown="keydownHandler(event)" onresize="resize()">
         <div id="game-wrapper">
             <img id="cannon" src="img/cannon.png" alt="Cannone">
         </div>
