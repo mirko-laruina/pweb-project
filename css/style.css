@@ -1,0 +1,24 @@
+html, body {
+    /* altezza degli "elementi padri", serve per game-wrapper */
+    height: 100%;
+}
+
+#game-wrapper {
+    /* this way all its child will have absolute positioning relative to this element */
+    position: relative;
+    
+    height: 90%;
+    width: 80%;
+    display: block;
+    border: 1px solid black;
+    background-color: rgb(226, 226, 226); /* fallback bg */
+    background-image: url("./../img/bg-2.png");
+    background-size: cover;
+}
+
+#cannon {
+    height: 15%;
+    position: absolute;
+    top: 80%;
+    right: 0;
+}
