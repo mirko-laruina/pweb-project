@@ -110,14 +110,30 @@ html, body {
     position: absolute;
     text-align: center;
     width: 40%;
-    height: 40%;
+    max-height: 40%;
     left: 30%;
     top: -100%;
     transition: all 1s ease 0s;
     background-color: #ff9f43;
     box-shadow: 0.4em 0.4em 0px 0px rgba(0,0,0,0.75);
+    z-index: 6;
+    color: white;
 }
 
 .menu.down {
     top: 25%;
+}
+
+button {
+    min-width: 30%;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    padding: 0.3em 1em;
+    border: none;
+    background:#ff6348;
+    color: black;
+    box-shadow: 0.2em 0.2em 0px 0px rgba(0,0,0,0.75);
+
 }

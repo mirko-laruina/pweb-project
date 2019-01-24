@@ -16,17 +16,15 @@ function Cannon(speed, cannonFrequency){
 
 function cannonStart(){
     var that = this;
-    if(this.intervalId == undefined){
-        intervalId = setInterval(function(){
-            if(game.pause) return;
-            that.shoot();
-        }, this.shootFrequency);
+    this.shootInterval = setInterval(function(){
+        if(game.pause) return;
+        that.shoot();
+    }, this.shootFrequency);
 
-        setInterval(function(){
-            if(game.pause) return;
-            that.move()
-        }, 1000/game.fps);
-    }
+    this.moveInterval = setInterval(function(){
+        if(game.pause) return;
+        that.move()
+    }, 1000/game.fps);
 }
 
 function cannonMove(){

@@ -26,7 +26,7 @@ function spawnBall(size, speed, value, posX, posY){
     this.ballArray.push(newBall);
 }
 
-function burstBall(index){
+function burstBall(index, giveMoney){
     //overcomplicated, but index may vary and I could flag as non-active a ball which is not
     var ball = this.ballArray.slice(index, index+1)[0];
     ball.active = false;
@@ -41,9 +41,10 @@ function burstBall(index){
         ballElem.style.transform = 'translateY(50%) translateX(-50%)';
     }, 100);
 
-    for(var i = 0; i<ball.size; i++){
-        this.spawnMoney(ball.posX, ball.posY);
-    }
+    if(giveMoney)
+        for(var i = 0; i<ball.size; i++){
+            this.spawnMoney(ball.posX, ball.posY);
+        }
 
     setTimeout(function(self){
         //see first comment of this function

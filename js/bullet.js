@@ -6,7 +6,7 @@ function Bullet(posLeft){
     game.wrapper.appendChild(this.elem);
     this.posX = posLeft
     this.elem.style.left = posLeft + '%' ;
-    this.elem.style.bottom = '15%';
+    this.elem.style.bottom = '18%';
     this.speed = 100;
     this.posY = 15;
 
