@@ -20,6 +20,10 @@ function keydownHandler(event){
     //Per compatibilita': Chrome e IE hanno event globale
     //Firefox necessita che glielo si passi come argomento
     event = event || window.event;
+
+    if(game.pause && event.key == "Enter"){
+        restartGame();
+    }
     if(game == undefined || game.pause) return;
 
     if(event.key == 'p' || event.key == ' '){
@@ -29,9 +33,11 @@ function keydownHandler(event){
 
     switch(event.key){
         case "ArrowLeft":
+        case  'a':
             cannon.dir = 'l';
             break;
         case "ArrowRight":
+        case 'd':
             cannon.dir = 'r';
             break;
     }
