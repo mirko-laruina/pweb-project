@@ -27,7 +27,7 @@ function startCD(){
                     that.c.bulletArray.splice(j, 1);
                     if(ball.label.nodeValue == 1){
                         ball.label.nodeValue = '';
-                        that.bm.burst(i);
+                        that.bm.burst(i, true);
                     } else {
                         ball.label.nodeValue = parseInt(ball.label.nodeValue) - 1;
                         ball.bubbleEffect();
