@@ -90,14 +90,14 @@ function lost(){
 }
 
 function restartGame(){
+    clearInterval(game.spawnerInterval);
+    clearInterval(cannon.moveInterval);
+    clearInterval(cannon.shootInterval);
     for (var i in bm.ballArray){
         bm.burst(i, false);
     }
     for (var i in cannon.bulletArray){
         cannon.bulletArray[i].remove();
     }
-    clearInterval(game.spawnerInterval);
-    clearInterval(cannon.moveInterval);
-    clearInterval(cannon.shootInterval)
     startGame();
 }
