@@ -20,20 +20,29 @@
                 <p><img src="./img/diamond.png" alt="Diamanti"><span id="money-value"></span></p>
             </div>
             <section id="intro" class="menu down">
-                <h1>Benvenuto su BounceThemAll!</h1>
-                <p>BounceThemAll! &egrave; un gioco single-player dove dovrai
-                    far scoppiare il maggior numero di palline possibili.<br>
-                    Man mano che il gioco avanza, quelle fantastiche sferette colorate
-                    e palleggianti diventeranno sempre pi&ugrave; ostiche e difficili da battere.<br>
-                    Avrai a disposizioni un cannone, che potrai migliorare con i diamanti ottenuti giocando,
-                    e i tasti freccia (o, in alternativa, 'a' e 'd') per spostarlo.
-                    Che dire di pi&ugrave;? Buon divertimento e attento a non farti colpire!
-                </p>
-                <button id="start" onclick="startGame()">Start</button>
+                <div class='menu-text'>
+                    <h1>Benvenuto su BounceThemAll!</h1>
+                    <p>BounceThemAll! &egrave; un gioco single-player dove dovrai
+                        far scoppiare il maggior numero di palline possibili.<br>
+                        Man mano che il gioco avanza, quelle fantastiche sferette colorate
+                        e palleggianti diventeranno sempre pi&ugrave; ostiche e difficili da battere.<br>
+                        Avrai a disposizioni un cannone, che potrai migliorare con i diamanti ottenuti giocando,
+                        e i tasti freccia (o, in alternativa, 'a' e 'd') per spostarlo.
+                        Che dire di pi&ugrave;? Buon divertimento e attento a non farti colpire!
+                    </p>
+                </div>
+                <button id="start" onclick="startGame(); this.blur()">Start</button>
             </section>
             <section id="lost-game" class="menu">
-                <p>Hai perso!</p>
-                <button id="restart" onclick="restartGame()">Restart</button>
+                <h2>Hai perso!</h2>
+                <p>Non fa nulla, l'importante &egrave; non arrendersi mai!<br>
+                    Vuoi riprovare?
+                </p>
+                <button id="restart" onclick="startGame(); this.blur()">Riprova</button>
+            </section>
+            <section id="pause" class="menu">
+                <h2>Pausa</h2>
+                <p>Puoi premere 'p' o spazio per riprendere</p>
             </section>
         </div>
     </body>

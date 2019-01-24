@@ -4,7 +4,7 @@ var intro;
 function init(){
     game = {
         wrapper: document.getElementById("game-wrapper"),
-        fps: 80,
+        fps: 60,
         pause: true,
         gravity: 30,
         points: document.createTextNode(0),
@@ -14,22 +14,26 @@ function init(){
     document.getElementById("money-value").appendChild(game.money);
     intro = document.getElementById("intro");
     lostMessage = document.getElementById("lost-game");
+    pauseMessage = document.getElementById("pause");
 }
 
 function keydownHandler(event){
     //Per compatibilita': Chrome e IE hanno event globale
     //Firefox necessita che glielo si passi come argomento
     event = event || window.event;
+    if(game == undefined) return;
 
     if(game.pause && event.key == "Enter"){
-        restartGame();
+        startGame();
     }
-    if(game == undefined || game.pause) return;
+    if(game.lost == true) return;
 
     if(event.key == 'p' || event.key == ' '){
-        game.pause = !game.pause;
+        pause();
         return;
     }
+
+    if(game.pause) return;
 
     switch(event.key){
         case "ArrowLeft":
@@ -58,6 +62,22 @@ function keyupHandler(event){
 }
 
 function startGame(){
+    /* clean-up when already played*/
+    clearInterval(game.spawnerInterval);
+    if(cannon != undefined){
+        clearInterval(cannon.moveInterval);
+        clearInterval(cannon.shootInterval);
+        for (var i in cannon.bulletArray){
+            cannon.bulletArray[i].remove();
+        }
+    }
+    if(bm != undefined)
+        for (var i in bm.ballArray){
+            bm.burst(i, false);
+        }
+    game.points.nodeValue = 0;
+    game.lost = false;
+
     intro.classList.remove('down');
     lostMessage.classList.remove('down');
     game.pause = false;
@@ -86,18 +106,15 @@ function addMoney(value){
 
 function lost(){
     game.pause = true;
+    game.lost = true;
     lostMessage.classList.add('down');
 }
 
-function restartGame(){
-    clearInterval(game.spawnerInterval);
-    clearInterval(cannon.moveInterval);
-    clearInterval(cannon.shootInterval);
-    for (var i in bm.ballArray){
-        bm.burst(i, false);
+function pause(){
+    if(game.pause){
+        pauseMessage.classList.remove('down');
+    } else {
+        pauseMessage.classList.add('down');
     }
-    for (var i in cannon.bulletArray){
-        cannon.bulletArray[i].remove();
-    }
-    startGame();
+    game.pause = !game.pause;
 }
