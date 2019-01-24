@@ -1,7 +1,20 @@
 Le immagini utilizzate sono state autoprodotte o scaricate, se con licenza che ne permette la modifica e l'uso non commerciale. 
 Per ogni file esterno, se ne indica di seguito la fonte.
 
-./img/bg-1.png      https://pixabay.com/it/inverno-panorama-star-home-2894499/
-./img/bg-2.png      https://pixabay.com/it/paesaggio-arancione-disegno-grafica-1769052/
-./img/bg-3.png      https://pixabay.com/it/piatto-google-now-panorama-1295685/
-./img/cannon.png    https://pixabay.com/it/cannone-artiglieria-arma-pesante-145684/
+./img :
+bg-1.png        https://pixabay.com/it/inverno-panorama-star-home-2894499/
+bg-2.png        https://pixabay.com/it/paesaggio-arancione-disegno-grafica-1769052/
+bg-3.png        https://pixabay.com/it/piatto-google-now-panorama-1295685/
+cannon.png      https://pixabay.com/it/cannone-artiglieria-arma-pesante-145684/
+ball-bullet.png https://pixabay.com/it/palla-sfera-globo-proiettile-scoop-149686/
+bubble.png      https://pixabay.com/it/bolla-sapone-sfera-ball-753503/
+bg-4.png        https://pixabay.com/it/kawaii-caricature-sun-natura-citt%C3%A0-1546834/
+boom.png        https://pixabay.com/it/esplosione-pow-detonazione-bomba-153710/
+bubble-2.png    https://pixabay.com/it/sfera-di-cristallo-di-cristallo-2090496/
+bubble-5.png    https://pixabay.com/it/bolla-bolla-di-sapone-palla-tondo-1841301/
+diamong.png     https://pixabay.com/it/diamante-gioiello-gemma-di-pietra-417896/
+
+./fonts:
+(licenza nella cartella)
+TitanOne-Regular.ttf    https://fonts.google.com/specimen/Titan+One?selection.family=Titan+One
+

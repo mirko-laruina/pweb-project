@@ -1,24 +1,123 @@
+@font-face {
+    font-family: 'Titan One';
+    src: url("../fonts/TitanOne-Regular.ttf");
+  }
+
 html, body {
     /* altezza degli "elementi padri", serve per game-wrapper */
     height: 100%;
+    margin: 0;
 }
 
 #game-wrapper {
     /* this way all its child will have absolute positioning relative to this element */
     position: relative;
     
-    height: 90%;
-    width: 80%;
+    height: 100%;
+    width: 100%;
     display: block;
-    border: 1px solid black;
     background-color: rgb(226, 226, 226); /* fallback bg */
-    background-image: url("./../img/bg-3.png");
+    background-image: url("./../img/bg-2.png");
     background-size: cover;
+    background-attachment: fixed;
+    background-position-y: bottom;
+    overflow: hidden;
 }
 
 #cannon {
     height: 15%;
     position: absolute;
     top: 80%;
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-50%);
+}
+
+.bullet {
+    position: absolute;
+    height: 3%;
+    z-index: 1;
+    transform: translateX(-50%);
+
+}
+
+.ball {
+    position: absolute;
+    z-index: 3;
+    text-align: center;
+    transition: width 0.1s ease 0s, opacity 0.5s cubic-bezier(0, 0, 0, 1.02) 0s;
+}
+
+.ball img {
+    width: 100%;
+}
+
+.ball p {
+    position: absolute;
+    top: 50%;
+    margin: 0;
+    left: 0;
     right: 0;
+    /* translateY is needed so that the text is perfectly centered (vertically).
+    the property translates (up) the p element by half his height */
+    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
+    text-shadow: 0.05em 0.05em rgb(0, 0, 0, 0.8) ;
+    font-family: 'Titan One', cursive;
+    font-weight: 100;
+}
+
+#stats {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 2%;
+    left: 2%;
+    width: 13%;
+    color: white;
+    font-weight: bolder;
+    z-index: 5;
+    /*background-image: url("../img/bg-menu-2.jpg");*/
+    background-color: #5758BB;
+    background-size: cover;
+    font-family: 'Arial', 'sans-serif';
+    box-shadow: 0.4em 0.4em 0px 0px rgba(0,0,0,0.75);
+}
+
+#stats img {
+    width: 25%;
+    vertical-align: middle;
+    margin-left: 15%; 
+}
+
+#points-value, #money-value {
+    vertical-align:middle;
+    font-size: 2em;
+    padding-left: 5%;
+    margin: 0;
+    text-shadow: 2px 2px rgb(0, 0, 0, 0.5) ;
+}
+
+.money {
+    position: absolute;
+    z-index: 4;
+    width: 4%;
+    transition: all 1s ease 0s;
+}
+
+.menu {
+    position: absolute;
+    text-align: center;
+    width: 40%;
+    height: 40%;
+    left: 30%;
+    top: -100%;
+    transition: all 1s ease 0s;
+    background-color: #ff9f43;
+    box-shadow: 0.4em 0.4em 0px 0px rgba(0,0,0,0.75);
+}
+
+.menu.down {
+    top: 25%;
 }

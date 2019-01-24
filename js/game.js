@@ -1,67 +1,91 @@
-var cannon = {}
-var wrapper;
+var game, cannon, bm, cd;
+var intro;
 
 function init(){
-    wrapper = {
-        elem: document.getElementById("game-wrapper"),
-        samples: 10,
-        pos_factor: 1
+    game = {
+        wrapper: document.getElementById("game-wrapper"),
+        fps: 80,
+        pause: true,
+        gravity: 30,
+        points: document.createTextNode(0),
+        money: document.createTextNode(0)
     }
-    cannon.initCannon();
-}
-
-cannon.initCannon = function(){
-    cannon.elem = document.getElementById("cannon");
-    cannon.max_pos = 100*cannon.elem.offsetLeft/wrapper.elem.clientWidth;
-    cannon.model_pos = cannon.max_pos/2
-    cannon.elem.style.margin = '0 0' + cannon.model_pos +'% 0';
-    //cannon.style.transition = "all 0.2s linear 0s"
-}
-
-function resize(){
-    cannon.elem.style.transition = "";
-    cannon.elem.style.margin = '0 0 0 0';
-    cannon.initCannon();
-}
-
-cannon.move = function(dir){
-
-    cannon.view_pos = cannon.model_pos;
-    
-    if(dir == 'l'){
-        cannon.model_pos += wrapper.pos_factor;
-        if(cannon.model_pos > cannon.max_pos){
-            cannon.model_pos = cannon.max_pos;
-        }
-    } else {
-        cannon.model_pos -= wrapper.pos_factor;
-        if(cannon.model_pos < 0){
-            cannon.model_pos = 0;
-        }
-    }
-
-    var dx_pos = (cannon.model_pos-cannon.view_pos)/wrapper.samples;
-    var intervalId = setInterval(movedx, 5);
-    var samples = wrapper.samples;
-    function movedx(){
-        if(--(samples) == 0){
-            clearInterval(intervalId);
-        }
-        cannon.view_pos += dx_pos;
-        cannon.elem.style.margin = '0 0' + cannon.view_pos +'% 0';
-    }
+    document.getElementById("points-value").appendChild(game.points);
+    document.getElementById("money-value").appendChild(game.money);
+    intro = document.getElementById("intro");
+    lostMessage = document.getElementById("lost-game");
 }
 
 function keydownHandler(event){
     //Per compatibilita': Chrome e IE hanno event globale
     //Firefox necessita che glielo si passi come argomento
     event = event || window.event;
+    if(game == undefined || game.pause) return;
+
+    if(event.key == 'p' || event.key == ' '){
+        game.pause = !game.pause;
+        return;
+    }
+
     switch(event.key){
         case "ArrowLeft":
-            cannon.move('l');
+            cannon.dir = 'l';
             break;
         case "ArrowRight":
-            cannon.move('r');
+            cannon.dir = 'r';
             break;
     }
+}
+
+function keyupHandler(event){
+    if(game == undefined || game.pause) return;
+    event = event || window.event;
+    if(event.key == "ArrowLeft"){
+        if(cannon.dir == 'l'){
+            cannon.dir = 's';
+        }
+    } else if (event.key == "ArrowRight"){
+        if(cannon.dir == 'r'){
+            cannon.dir = 's';
+        }
+    }
+}
+
+function startGame(){
+    intro.classList.remove('down');
+    lostMessage.classList.remove('down');
+
+    game.pause = false;
+    cannon = new Cannon(50, 100);
+    bm = new BallMaster(3, 5);
+    cd = new CollisionDetector(cannon, bm);
+    cd.start();
+    cannon.start();
+
+    setInterval(function(){
+        if(game.pause){
+            return;
+        }
+        bm.spawn(Math.floor(Math.random()*3+1),
+                Math.random()*10 + 5,
+                Math.floor(Math.random()*30)+1);
+    }, 600 );
+}
+
+function addPoints(value){
+    game.points.nodeValue = value + parseInt(game.points.nodeValue);
+}
+
+function addMoney(value){
+    game.money.nodeValue = value + parseInt(game.money.nodeValue);
+}
+
+function lost(){
+    game.pause = true;
+    lostMessage.classList.add('down');
+
+    delete cannon;
+    delete cd;
+    delete bm;
+
 }
