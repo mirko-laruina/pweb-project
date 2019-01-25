@@ -168,7 +168,8 @@ button {
     }
 
     #right-arrow {
-        right: 90%;
+        right: 0%;
+        box-shadow: -0.2em 0.2em 0px 0px rgba(0,0,0,0.75);
     }
 
     #left-arrow {
