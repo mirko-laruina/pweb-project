@@ -15,6 +15,10 @@
     </head>
     <body onload="init()" onkeydown="keydownHandler(event)" onkeyup="keyupHandler(event)">
         <div id="game-wrapper">
+                <nav>
+                    <button id="left-arrow" class="mobile-nav" onclick="mobileMove('l')" onmouseup="mobileMove('s')">&lt;</button>
+                    <button id="right-arrow" class="mobile-nav" onclick="mobileMove('r')" onmouseup="mobileMove('s')">&gt;</button>
+                </nav>
             <img id="cannon" src="img/cannon.png" alt="Cannone">
             <div id="stats">
                 <p><img src='./img/boom.png' alt="Punti"><span id='points-value'></span></p>
@@ -39,14 +43,14 @@
                 <p>Non fa nulla, l'importante &egrave; non arrendersi mai!<br>
                     Vuoi riprovare?
                 </p>
+                <button onclick="showIntro(); this.blur()">Intro</button>
                 <button id="restart" onclick="startGame(); this.blur()">Riprova</button>
             </section>
             <section id="pause" class="menu">
                 <h2>Pausa</h2>
                 <p>Puoi premere 'p' o spazio per riprendere</p>
             </section>
-            <button id="left-arrow" class="mobile-nav" onclick="mobileMove('l')" onmouseup="mobileMove('s')">&lt;</button>
-            <button id="right-arrow" class="mobile-nav" onclick="mobileMove('r')" onmouseup="mobileMove('s')">&gt;</button>
+            <button id="pause-btn" onclick="pause(); this.blur()">&#9612;&#9612;</button>
         </div>
     </body>
 </html>

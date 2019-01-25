@@ -50,7 +50,7 @@ function cannonShoot(){
     b.intervalId = setInterval(function() {
         if(game.pause) return;
         var res = b.move();
-        if(res > 95){
+        if(res > 100){
             b.remove();
             //Push appends, so the first element is the oldest
             that.bulletArray.shift();

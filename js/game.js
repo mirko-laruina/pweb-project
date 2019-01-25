@@ -4,17 +4,20 @@ var intro;
 function init(){
     game = {
         wrapper: document.getElementById("game-wrapper"),
-        fps: 60,
+        fps: 50,
         pause: true,
+        lost: true,
         gravity: 30,
         points: document.createTextNode(0),
-        money: document.createTextNode(0)
+        money: document.createTextNode(0),
+        count: 0
     }
     document.getElementById("points-value").appendChild(game.points);
     document.getElementById("money-value").appendChild(game.money);
     intro = document.getElementById("intro");
     lostMessage = document.getElementById("lost-game");
     pauseMessage = document.getElementById("pause");
+    pauseBtn = document.getElementById("pause-btn");
 }
 
 function keydownHandler(event){
@@ -23,7 +26,7 @@ function keydownHandler(event){
     event = event || window.event;
     if(game == undefined) return;
 
-    if(game.pause && event.key == "Enter"){
+    if(game.pause && game.lost && event.key == "Enter"){
         startGame();
     }
     if(game.lost == true) return;
@@ -50,11 +53,11 @@ function keydownHandler(event){
 function keyupHandler(event){
     if(game == undefined || game.pause) return;
     event = event || window.event;
-    if(event.key == "ArrowLeft"){
+    if(event.key == "ArrowLeft" || event.key == 'a'){
         if(cannon.dir == 'l'){
             cannon.dir = 's';
         }
-    } else if (event.key == "ArrowRight"){
+    } else if (event.key == "ArrowRight" || event.key == 'd'){
         if(cannon.dir == 'r'){
             cannon.dir = 's';
         }
@@ -76,17 +79,17 @@ function startGame(){
             bm.burst(i, false);
         }
     game.points.nodeValue = 0;
-    game.lost = false;
 
     intro.classList.remove('down');
     lostMessage.classList.remove('down');
-    game.pause = false;
-
     cannon = new Cannon(50, 100);
     bm = new BallMaster(3, 5);
     cd = new CollisionDetector(cannon, bm);
     cd.start();
     cannon.start();
+
+    game.pause = false;
+    game.lost = false;
 
     game.spawnerInterval = setInterval(function(){
         if(game.pause) return;
@@ -111,10 +114,13 @@ function lost(){
 }
 
 function pause(){
+    if(game.lost == undefined || game.lost) return;
     if(game.pause){
         pauseMessage.classList.remove('down');
+        pauseBtn.innerHTML = '&#9612;&#9612';
     } else {
         pauseMessage.classList.add('down');
+        pauseBtn.innerHTML = "&#9658;";
     }
     game.pause = !game.pause;
 }
@@ -123,4 +129,10 @@ function mobileMove(dir){
     if(!game.pause && !game.lost){
         cannon.dir = dir;
     }
+}
+
+function showIntro(){
+    pauseMessage.classList.remove('down');
+    lostMessage.classList.remove('down');
+    intro.classList.add('down');
 }

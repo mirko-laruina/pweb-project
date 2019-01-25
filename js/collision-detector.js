@@ -10,12 +10,14 @@ function startCD(){
     setInterval(function(){
         if(game.pause) return;
         for (var i in that.bm.ballArray){
+            if(game.lost) break;
             ball = that.bm.ballArray[i];
             ballRadius = ball.width/2;
             ballCenterX = ball.posX+ballRadius;
             ballCenterY = ball.posY+ballRadius;
             for(var j in that.c.bulletArray){
                 if(!ball.active) break; //currently bursting
+                if(game.lost) break;
                 bullet = that.c.bulletArray[j];
                 bulletTopY = bullet.posY+3;
                 bulletCenterX = bullet.posX; //already centered with CSS
@@ -38,7 +40,11 @@ function startCD(){
 
             if((cannon.posX - ballCenterX)**2 + (cannon.posY-cannon.height/3 - ballCenterY)**2
                 <= (ballRadius+cannon.width/4)**2){
-                lost();
+                    //The check is needed because it can happen a detection
+                    //after lost is called, so when games resumes automatically re-ends
+                    if(that.bm.ballArray[i].active == true)
+                        lost();
+                    that.bm.ballArray[i].active = false;
             }
 
         }

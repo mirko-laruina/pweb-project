@@ -45,7 +45,7 @@ html, body {
     position: absolute;
     z-index: 3;
     text-align: center;
-    transition: width 0.1s ease 0s, opacity 0.5s cubic-bezier(0, 0, 0, 1.02) 0s;
+    transition: width 0.1s ease 0s, opacity 0.5s cubic-bezier(0, 0, 0, 1.02) 0s, transform 0.1s ease 0s;
 }
 
 .ball img {
@@ -110,7 +110,7 @@ html, body {
     text-align: center;
     width: 40%;
     max-height: 60%;
-    left: 30%;
+    left: 27.5%;
     top: -200%;
     transition: all 1s ease 0s;
     background-color: #e58e26;
@@ -122,8 +122,8 @@ html, body {
     font-family: 'Roboto', 'sans-serif';
     text-shadow: 2px 2px rgba(70, 70, 70, 0.8);
     letter-spacing: 0.03em;
-    padding: 1.5em;
-    overflow: auto;
+    padding: 2.5%;
+    overflow:auto;
 }
 
 .menu-text {
@@ -134,7 +134,7 @@ html, body {
 
 #intro {
     width: 60%;
-    left: 20%;
+    left: 17.5%;
 }
 
 .menu.down {
@@ -142,7 +142,6 @@ html, body {
 }
 
 button {
-    min-width: 30%;
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 0.5em;
@@ -152,7 +151,19 @@ button {
     color: white;
     text-shadow: 2px 3px rgba(0,0,0,0.75);
     box-shadow: 0.2em 0.2em 0px 0px rgba(0,0,0,0.75);
+    z-index: 6;
+    margin-right: 1em;
+    margin-left: 1em;
 
+}
+
+#pause-btn {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    width: 6%;
+    margin: 0;
+    padding: 1.2% 0.5% 1.2% 1%;
 }
 
 .mobile-nav {
@@ -187,5 +198,12 @@ button {
         left: 5%;
         right: 5%;
         width: 80%;
+    }
+
+    #pause-btn {
+        width: auto;
+        font-size: 1em;
+        margin: 0;
+        padding: 0.3em 1em;
     }
 }
