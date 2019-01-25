@@ -154,3 +154,24 @@ button {
     box-shadow: 0.2em 0.2em 0px 0px rgba(0,0,0,0.75);
 
 }
+
+.mobile-nav {
+    position: absolute;
+    bottom: 0;
+    width: 10%;
+    display: none;
+}
+
+@media (max-width: 640px){
+    .mobile-nav {
+        display: block;
+    }
+
+    #right-arrow {
+        right: 90%;
+    }
+
+    #left-arrow {
+        left: 0%;
+    }
+}

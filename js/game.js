@@ -118,3 +118,9 @@ function pause(){
     }
     game.pause = !game.pause;
 }
+
+function mobileMove(dir){
+    if(!game.pause && !game.lost){
+        cannon.dir = dir;
+    }
+}
