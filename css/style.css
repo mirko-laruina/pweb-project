@@ -175,4 +175,17 @@ button {
     #left-arrow {
         left: 0%;
     }
+
+    #stats, .ball {
+        font-size: 6px;
+    }
+    .menu {
+        font-size: 10px;
+    }
+
+    #intro {
+        left: 5%;
+        right: 5%;
+        width: 80%;
+    }
 }
