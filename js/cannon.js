@@ -45,7 +45,7 @@ function cannonMove(){
 }
 
 function cannonShoot(){
-    var b = new Bullet(parseFloat(this.elem.style.left));
+    var b = new Bullet(this.posX);
     var that = this;
     b.intervalId = setInterval(function() {
         if(game.pause) return;

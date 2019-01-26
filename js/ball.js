@@ -7,7 +7,7 @@ function BallMaster(maxSize, maxBalls){
     this.spawnMoney = spawnMoneyBall;
 }
 
-function spawnBall(size, speed, value, posX, posY){
+function spawnBall(size, speed, value){
     if(this.maxBalls <= this.ballArray.length){
         return;
     }
@@ -16,7 +16,7 @@ function spawnBall(size, speed, value, posX, posY){
     else if (size < 1)
         size = 1;
     
-    var newBall = new Ball(size, speed, value, posX, posY);
+    var newBall = new Ball(size, speed, value);
 
     newBall.intervalId = setInterval(function(){
         if(game.pause) return;
@@ -77,10 +77,11 @@ function spawnMoneyBall(posX, posY){
     addMoney(1);
 }
 
-function Ball(size, speed, value, posX, posY){
+function Ball(size, speed, value){
     this.elem = document.createElement('div');
     this.img = document.createElement('img');
     this.label = document.createTextNode(value);
+    this.currentValue = value;
     this.p = document.createElement('p');
     this.p.appendChild(this.label);
     this.elem.appendChild(this.p);
@@ -90,8 +91,9 @@ function Ball(size, speed, value, posX, posY){
     this.width = 0;
     this.elem.setAttribute('class', 'ball');
     this.img.setAttribute('alt', 'A ball');
-    imgNumber = Math.floor(Math.random()*5 + 1);
+    imgNumber = Math.floor(Math.random()*9 + 1);
     this.img.setAttribute('src', './img/bubble-' + imgNumber + '.png');
+    this.img.style.transform = 'rotate(' + Math.floor(Math.random()*121 - 60) + 'deg)';
     this.active = true;
 
     switch(size){
@@ -112,13 +114,8 @@ function Ball(size, speed, value, posX, posY){
 
     this.p.style.fontSize = this.fsize + 'em';
     this.elem.style.width = this.width + '%'
-    if(posX == undefined || posY == undefined){
-        this.posX = -10 + (Math.floor(Math.random()*2)*120); //-10 o 110
-        this.posY = 70 + Math.random()*20; //70-90
-    } else {
-        this.posX = posX;
-        this.posY = posY;
-    }
+    this.posX = -10 + (Math.floor(Math.random()*2)*120); //-10 o 110
+    this.posY = 70 + Math.random()*20; //70-90
     this.elem.style.left = this.posX + '%';
     this.elem.style.bottom = this.posY + '%';
     this.speedX = speed;
@@ -131,7 +128,6 @@ function Ball(size, speed, value, posX, posY){
 }
 
 function ballMoveX(){
-    this.posX = parseFloat(this.elem.style.left);
     this.posX += this.speedX/game.fps;
     if(this.posX+this.width > 100){
         this.speedX = -Math.abs(this.speedX);
@@ -143,7 +139,6 @@ function ballMoveX(){
 }
 
 function ballMoveY(){
-    this.posY = parseFloat(this.elem.style.bottom);
     this.speedY -= game.gravity/game.fps;
 
     this.posY += this.speedY/game.fps;
@@ -152,7 +147,6 @@ function ballMoveY(){
         this.speedY = Math.abs(this.speedY); //urto anelastico
     }
     //controllare bordo alto non serve: conservazione dell'energia
-    
     this.elem.style.bottom = this.posY + '%';
 }
 

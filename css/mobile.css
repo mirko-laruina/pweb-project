@@ -1,0 +1,41 @@
+.mobile-nav {
+    position: absolute;
+    bottom: 0;
+    width: 10%;
+    display: none;
+}
+
+@media (max-width: 640px){
+    .mobile-nav {
+        display: block;
+    }
+
+    #right-arrow {
+        right: 0%;
+        box-shadow: -0.2em 0.2em 0px 0px rgba(0,0,0,0.75);
+    }
+
+    #left-arrow {
+        left: 0%;
+    }
+
+    #stats, .ball {
+        font-size: 6px;
+    }
+    .menu {
+        font-size: 10px;
+    }
+
+    #intro {
+        left: 5%;
+        right: 5%;
+        width: 80%;
+    }
+
+    #pause-btn {
+        width: auto;
+        font-size: 1em;
+        margin: 0;
+        padding: 0.3em 1em;
+    }
+}

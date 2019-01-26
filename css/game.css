@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'Titan One';
+    src: url("../fonts/TitanOne-Regular.ttf");
+}
+
+#cannon {
+    height: 15%;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-50%);
+}
+
+.bullet {
+    position: absolute;
+    height: 3%;
+    z-index: 1;
+    transform: translateX(-50%);
+
+}
+
+.ball {
+    position: absolute;
+    z-index: 3;
+    text-align: center;
+    transition: width 0.1s ease 0s, opacity 0.5s cubic-bezier(0, 0, 0, 1.02) 0s, transform 0.1s ease 0s;
+}
+
+.ball img {
+    width: 100%;
+}
+
+.ball p {
+    position: absolute;
+    top: 50%;
+    margin: 0;
+    left: 0;
+    right: 0;
+    /* translateY is needed so that the text is perfectly centered (vertically).
+    the property translates (up) the p element by half his height */
+    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
+    text-shadow: 0.1em 0.1em rgba(0, 0, 0, 0.8) ;
+    font-family: 'Titan One', cursive;
+    font-weight: 100;
+    z-index: 4;
+}
