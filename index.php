@@ -163,7 +163,7 @@
                     possibili, collezionando diamanti e cercando di battere il tuo record!<br>
                     Quando una pallina ti colpisce, per te &egrave; finita, quindi cerca di stare attento.<br>
                     Avrai a disposizione un cannone, che puoi muovere a destra e sinistra usando i tasti freccia
-                    (o, in alternativa, 'a' e 'd').<br>
+                    (oppure 'a' e 'd').<br>
                     Ogni pallina ha numero di vite, che troverai scritto al centro, che indica i colpi necessari prima
                     che questa esploda. Progredendo nel gioco questo numero aumenter&agrave; rendendo sempre pi&ugrave;
                     ostico sconfiggere le palline. <br>
